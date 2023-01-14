@@ -24,5 +24,6 @@ class Solution:
 if __name__ == "__main__":
     string = input().replace('"','')
     Sol = Solution()
+    Sol.lengthOfLongestSubstring(string)
     print(Sol.lengthOfLongestSubstring(string))
         
