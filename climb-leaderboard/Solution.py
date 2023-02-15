@@ -8,25 +8,20 @@ import sys
 
 def climbingLeaderboard(ranked, player):
     player.sort(reverse=True)
-    print(ranked)
-    print(player)
     newRank = []
-    for score in player:
-        for n in ranked:
-            if(score >= n):
-                ranked.insert(ranked.index(n), score)
-                break
-
-    if player[len(player) - 1] not in ranked:
-        ranked.append(player[len(player) - 1])
-    
     noDuplRank = [*set(ranked)]
     noDuplRank.sort(reverse=True)
-    
-    for x in player:
-        if x in noDuplRank:
-            newRank.append(noDuplRank.index(x) + 1)
+
+    for score in player:
+        for scoreAlready in noDuplRank:
+            if(score >= scoreAlready):
+                newRank.append(noDuplRank.index(scoreAlready)+1)
+                break
+
+    if player[len(player) - 1] < noDuplRank[len(noDuplRank) - 1]:
+        newRank.append(len(noDuplRank) + 1)
     newRank.sort(reverse=True)
+
     return newRank
 
 
