@@ -20,10 +20,6 @@ def highestValuePalindrome(s, n, k):
     else:
         mid = int(len(s) / 2)
         right = list(s[mid + 1:])
-        if(s[mid] != "9"):
-            midVal.append("9")
-        else:
-            midVal.append(s[mid])
     
     right.reverse()
     left = list(s[:mid])
@@ -31,10 +27,12 @@ def highestValuePalindrome(s, n, k):
     for i in range(0, mid, 1):
         if (left[i] != right[i]):
             if (k == 1):
+                print(left, right)
                 if (left[i] > right[i]):
                     right[i] = left[i]
                 else:
                     left[i] = right[i]
+                print(left, right)
             elif (k >= 2):
                 left[i] = "9"
                 right[i] = "9"
@@ -49,7 +47,16 @@ def highestValuePalindrome(s, n, k):
                     right[i] = "9"
                     k -= 2
             else:
-                break
+                continue
+    
+  
+    if(s[mid] != "9"):
+        if(k > 0):
+            midVal.append("9")
+        else:
+            midVal.append(s[mid])
+    else:
+        midVal.append(s[mid])
 
     if (left == right):
         right.reverse()
@@ -62,7 +69,7 @@ def highestValuePalindrome(s, n, k):
 
 
 if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+    #fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     first_multiple_input = input().rstrip().split()
 
@@ -74,6 +81,6 @@ if __name__ == '__main__':
 
     result = highestValuePalindrome(s, n, k)
 
-    fptr.write(result + '\n')
+    #fptr.write(result + '\n')
 
-    fptr.close()
+    #fptr.close()
