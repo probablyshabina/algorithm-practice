@@ -1,1 +1,1 @@
-# algothon of codefest 2022
+Documenting my Algorithm journey
